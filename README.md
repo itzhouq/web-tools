@@ -4,6 +4,8 @@
 
 **核心理念：全部工具纯前端实现，数据不上传，隐私零顾虑。**
 
+> 📖 为什么做这个、架构怎么取舍的：见博客复盘 [《小工具，解决日常小麻烦：我的纯前端工具集上线了》](https://itzhouq.cn/blog/web-tools-launch)
+
 ## 技术栈
 
 - Next.js 16（App Router，`output: export` 静态导出）
