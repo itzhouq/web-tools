@@ -1,11 +1,39 @@
 /**
- * 主域名子路径反代 Worker
- * 路由：itzhouq.cn/tools* → web-tools-subpath.pages.dev（路径原样透传）
+ * 主域名子路径分流 Worker
+ * 路由：itzhouq.cn/tools*
+ *
+ * 规则：
+ * - /tools/、/tools/_next/*、8 个工具页 → 工具站（web-tools-subpath.pages.dev）
+ * - 其余 /tools/*（如博客的 /tools/chat）→ 原样回源博客，互不影响
  */
+const TOOLS_ORIGIN = "https://web-tools-subpath.pages.dev";
+const SLUGS = new Set([
+  "image-compress",
+  "text-to-image",
+  "xhs-cover",
+  "xhs-words",
+  "json-format",
+  "jwt-decoder",
+  "timestamp",
+  "qr-code",
+]);
+
 export default {
   async fetch(request) {
-    const upstream = "https://web-tools-subpath.pages.dev";
     const url = new URL(request.url);
-    return fetch(`${upstream}${url.pathname}${url.search}`, request);
+    const p = url.pathname;
+    const seg = p.split("/").filter(Boolean)[1]; // "/tools/<seg>/..." 的 <seg>
+
+    const isAssets = p.startsWith("/tools/_next/");
+    const isHome = p === "/tools" || p === "/tools/";
+    const isSlug =
+      seg &&
+      SLUGS.has(seg) &&
+      (p === `/tools/${seg}` || p.startsWith(`/tools/${seg}/`));
+
+    if (isAssets || isHome || isSlug) {
+      return fetch(`${TOOLS_ORIGIN}${p}${url.search}`, request);
+    }
+    return fetch(request);
   },
 };
