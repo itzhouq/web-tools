@@ -3,13 +3,16 @@
 import {
   Braces,
   Clock,
+  Crop,
   ImageDown,
-  LetterText as ImageText,
+  JapaneseYen,
   KeyRound,
+  LetterText as ImageText,
   Palette,
   PenLine,
   QrCode,
   ShieldAlert,
+  Stamp,
   Terminal,
   Type,
   Image as ImageIcon,
@@ -29,6 +32,9 @@ const ICONS: Record<string, LucideIcon> = {
   PenLine,
   Terminal,
   Type,
+  Crop,
+  Stamp,
+  JapaneseYen,
 };
 
 export function ToolIcon({

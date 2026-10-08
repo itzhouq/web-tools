@@ -9,6 +9,8 @@
 const TOOLS_ORIGIN = "https://web-tools-subpath.pages.dev";
 const SLUGS = new Set([
   "image-compress",
+  "image-crop",
+  "image-watermark",
   "text-to-image",
   "xhs-cover",
   "xhs-words",
@@ -16,6 +18,7 @@ const SLUGS = new Set([
   "jwt-decoder",
   "timestamp",
   "qr-code",
+  "rmb-uppercase",
 ]);
 
 export default {
