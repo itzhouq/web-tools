@@ -1,0 +1,7 @@
+{
+  "name": "tools-subpath-proxy",
+  "main": "subpath-proxy.js",
+  "compatibility_date": "2026-10-01",
+  "routes": [{ "pattern": "itzhouq.cn/tools*", "zone_name": "itzhouq.cn" }],
+  "observability": { "enabled": true }
+}
