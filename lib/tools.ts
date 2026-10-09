@@ -87,6 +87,16 @@ export const TOOLS: ToolMeta[] = [
     keywords: ["长图", "文字图", "分享图", "金句卡片"],
   },
   {
+    slug: "wechat-cover",
+    name: "公众号封面",
+    description: "输入标题生成 2.35:1 公众号首图，支持次图与小红书尺寸，3x 高清导出。",
+    category: "xhs",
+    icon: "Newspaper",
+    tint: { bg: "#e0f2fe", fg: "#0369a1" },
+    keywords: ["公众号", "封面", "首图", "微信", "2.35:1"],
+    isNew: true,
+  },
+  {
     slug: "xhs-cover",
     name: "小红书封面",
     description: "套用精选模板，输入标题即可生成 3:4 高清封面图。",
