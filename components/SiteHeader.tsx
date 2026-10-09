@@ -37,6 +37,14 @@ export function SiteHeader() {
             </Link>
           )}
           <a
+            href={site.mainSiteUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-lg px-3 py-1.5 text-sm text-stone-600 transition-colors hover:bg-stone-100 hover:text-stone-900"
+          >
+            博客
+          </a>
+          <a
             href={site.github}
             target="_blank"
             rel="noopener noreferrer"
