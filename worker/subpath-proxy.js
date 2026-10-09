@@ -3,7 +3,8 @@
  * 路由：itzhouq.cn/tools*
  *
  * 规则：
- * - /tools/、/tools/_next/*、8 个工具页 → 工具站（web-tools-subpath.pages.dev）
+ * - /tools/_next/*、8 个工具页 → 工具站（web-tools-subpath.pages.dev）
+ * - /tools/（博客原生工具卡片页，内嵌工具箱 iframe）→ 原样回源博客
  * - 其余 /tools/*（如博客的 /tools/chat）→ 原样回源博客，互不影响
  */
 const TOOLS_ORIGIN = "https://web-tools-subpath.pages.dev";
@@ -31,13 +32,12 @@ export default {
     const seg = p.split("/").filter(Boolean)[1]; // "/tools/<seg>/..." 的 <seg>
 
     const isAssets = p.startsWith("/tools/_next/");
-    const isHome = p === "/tools" || p === "/tools/";
     const isSlug =
       seg &&
       SLUGS.has(seg) &&
       (p === `/tools/${seg}` || p.startsWith(`/tools/${seg}/`));
 
-    if (isAssets || isHome || isSlug) {
+    if (isAssets || isSlug) {
       return fetch(`${TOOLS_ORIGIN}${p}${url.search}`, request);
     }
     return fetch(request);
