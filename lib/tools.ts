@@ -29,6 +29,26 @@ export const CATEGORY_META: Record<
 
 export const TOOLS: ToolMeta[] = [
   {
+    slug: "gif-generator",
+    name: "GIF 合成",
+    description: "将多张图片按顺序合成动图，可调帧间隔与尺寸，实时预览。",
+    category: "image",
+    icon: "Film",
+    tint: { bg: "#ede9fe", fg: "#7c3aed" },
+    keywords: ["gif", "动图", "合成", "帧动画"],
+    isNew: true,
+  },
+  {
+    slug: "long-image-slicer",
+    name: "长图切片",
+    description: "把长图按 3:4 智能寻找安全切线切片，避免切断内容。",
+    category: "image",
+    icon: "Scissors",
+    tint: { bg: "#ffe4e6", fg: "#e11d48" },
+    keywords: ["长图", "切片", "3:4", "分割"],
+    isNew: true,
+  },
+  {
     slug: "image-compress",
     name: "图片压缩",
     description: "在浏览器本地压缩图片体积，支持质量、格式与尺寸调整。",
@@ -122,6 +142,16 @@ export const TOOLS: ToolMeta[] = [
     icon: "JapaneseYen",
     tint: { bg: "#dcfce7", fg: "#16a34a" },
     keywords: ["人民币", "大写", "金额", "发票", "财务"],
+    isNew: true,
+  },
+  {
+    slug: "chinese-converter",
+    name: "简繁互转",
+    description: "简体中文与繁体中文双向转换，支持大陆、台湾、香港用词习惯。",
+    category: "text",
+    icon: "Languages",
+    tint: { bg: "#fef9c3", fg: "#a16207" },
+    keywords: ["简繁", "繁体", "简体", "转换"],
     isNew: true,
   },
   {

@@ -1,17 +1,21 @@
 #!/usr/bin/env bash
-# 全量发布：子路径构建 + prepare + 两个 Pages 项目 + Worker
+# 全量发布：默认构建→子域名；子路径构建→子路径项目；Worker 同步
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-echo "=== 1/4 子路径构建 ==="
-NEXT_PUBLIC_BASE_PATH=/tools npx next build 2>&1 | tail -3
+echo "=== 1/5 默认构建（子域名）==="
+npm run build 2>&1 | tail -3
 
-echo "=== 2/4 对齐布局 ==="
+echo "=== 2/5 部署 web-tools（子域名）==="
+npx wrangler pages deploy out --project-name web-tools --branch main --commit-dirty=true 2>&1 | grep -E "✨|✘" | head -2
+
+echo "=== 3/5 子路径构建 + 对齐布局 ==="
+NEXT_PUBLIC_BASE_PATH=/tools npx next build 2>&1 | tail -3
 bash scripts/prepare-subpath.sh
 
-echo "=== 3/4 部署 web-tools-subpath ==="
+echo "=== 4/5 部署 web-tools-subpath ==="
 npx wrangler pages deploy out --project-name web-tools-subpath --branch main --commit-dirty=true 2>&1 | grep -E "✨|✘" | head -2
 
-echo "=== 4/4 部署 Worker（新工具页分流）==="
+echo "=== 5/5 部署 Worker ==="
 cd worker
 npx wrangler deploy 2>&1 | grep -E "Uploaded|Deployed|itzhouq.cn|✘" | head -4

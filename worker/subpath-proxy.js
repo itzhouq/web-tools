@@ -11,14 +11,17 @@ const SLUGS = new Set([
   "image-compress",
   "image-crop",
   "image-watermark",
+  "gif-generator",
+  "long-image-slicer",
   "text-to-image",
   "xhs-cover",
   "xhs-words",
+  "chinese-converter",
+  "rmb-uppercase",
   "json-format",
   "jwt-decoder",
   "timestamp",
   "qr-code",
-  "rmb-uppercase",
 ]);
 
 export default {
