@@ -52,6 +52,20 @@ npx wrangler pages deploy out --project-name web-tools-subpath --branch main
 3. 在 `app/tools/<slug>/page.tsx` 添加路由与 metadata；
 4. 首页分类与搜索、sitemap 自动生效。
 
+## 工具子域名速查
+
+每个工具都有独立短子域名（由 `worker/tools-subdomains.js` 路由，映射需与 `lib/subdomains.ts` 保持同步）：
+
+| 子域名 | 工具 | 子域名 | 工具 |
+|---|---|---|---|
+| json.itzhouq.cn | JSON 格式化 | jwt.itzhouq.cn | Token 解析 |
+| ts.itzhouq.cn | 时间戳转换 | qr.itzhouq.cn | 二维码生成 |
+| img.itzhouq.cn | 图片压缩 | crop.itzhouq.cn | 图片裁剪 |
+| mark.itzhouq.cn | 图片水印 | gif.itzhouq.cn | GIF 合成 |
+| slice.itzhouq.cn | 长图切片 | card.itzhouq.cn | 文字转图片 |
+| cover.itzhouq.cn | 小红书封面 | words.itzhouq.cn | 违禁词检测 |
+| jianfan.itzhouq.cn | 简繁互转 | rmb.itzhouq.cn | 人民币大写 |
+
 ## 目录结构
 
 ```

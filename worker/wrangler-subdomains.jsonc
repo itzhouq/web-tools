@@ -1,0 +1,22 @@
+{
+  "name": "tools-subdomains",
+  "main": "tools-subdomains.js",
+  "compatibility_date": "2026-10-01",
+  "routes": [
+    { "pattern": "json.itzhouq.cn/*", "zone_name": "itzhouq.cn" },
+    { "pattern": "jwt.itzhouq.cn/*", "zone_name": "itzhouq.cn" },
+    { "pattern": "ts.itzhouq.cn/*", "zone_name": "itzhouq.cn" },
+    { "pattern": "qr.itzhouq.cn/*", "zone_name": "itzhouq.cn" },
+    { "pattern": "img.itzhouq.cn/*", "zone_name": "itzhouq.cn" },
+    { "pattern": "crop.itzhouq.cn/*", "zone_name": "itzhouq.cn" },
+    { "pattern": "mark.itzhouq.cn/*", "zone_name": "itzhouq.cn" },
+    { "pattern": "gif.itzhouq.cn/*", "zone_name": "itzhouq.cn" },
+    { "pattern": "slice.itzhouq.cn/*", "zone_name": "itzhouq.cn" },
+    { "pattern": "card.itzhouq.cn/*", "zone_name": "itzhouq.cn" },
+    { "pattern": "cover.itzhouq.cn/*", "zone_name": "itzhouq.cn" },
+    { "pattern": "words.itzhouq.cn/*", "zone_name": "itzhouq.cn" },
+    { "pattern": "jianfan.itzhouq.cn/*", "zone_name": "itzhouq.cn" },
+    { "pattern": "rmb.itzhouq.cn/*", "zone_name": "itzhouq.cn" }
+  ],
+  "observability": { "enabled": true }
+}
