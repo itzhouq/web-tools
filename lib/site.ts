@@ -1,7 +1,7 @@
 /** 站点全局配置 */
 export const site = {
-  name: "风飞扬itzhouq的工具箱",
-  title: "风飞扬itzhouq的工具箱 · 免费在线图片、文本与效率工具",
+  name: "搞副业的老周itzhouq的工具箱",
+  title: "搞副业的老周itzhouq的工具箱 · 免费在线图片、文本与效率工具",
   description:
     "为日常小事准备的小工具：图片压缩、文字转图片、封面设计、JSON 格式化等。全部在浏览器本地完成，不上传任何数据。",
   /** 部署后的真实域名（影响 sitemap/OG 链接） */
@@ -10,5 +10,6 @@ export const site = {
   mainSiteUrl: "https://itzhouq.cn",
   locale: "zh-CN",
   github: "https://github.com/itzhouq",
-  author: "风飞扬itzhouq",
+  author: "搞副业的老周itzhouq",
+  avatar: "/avatar-96.png",
 };

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Wrench, Github } from "lucide-react";
+import { Github } from "lucide-react";
 import { site } from "@/lib/site";
 import { TOOLS_HOME, isToolSubdomain } from "@/lib/subdomains";
 
@@ -20,9 +20,14 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 border-b border-stone-200/70 bg-white/80 backdrop-blur-md">
       <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-4">
         <Link href={homeHref} className="flex items-center gap-2.5 group">
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 text-white shadow-sm transition-transform group-hover:scale-105">
-            <Wrench className="h-4 w-4" strokeWidth={2.2} />
-          </span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={site.avatar}
+            alt={site.author}
+            width={32}
+            height={32}
+            className="h-8 w-8 rounded-lg shadow-sm transition-transform group-hover:scale-105"
+          />
           <span className="text-[15px] font-semibold tracking-tight text-stone-800">
             {site.name}
           </span>
