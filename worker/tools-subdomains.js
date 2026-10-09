@@ -21,6 +21,7 @@ const SUB_TO_SLUG = {
   slice: "long-image-slicer",
   card: "text-to-image",
   cover: "xhs-cover",
+  gzh: "wechat-cover",
   words: "xhs-words",
   jianfan: "chinese-converter",
   rmb: "rmb-uppercase",

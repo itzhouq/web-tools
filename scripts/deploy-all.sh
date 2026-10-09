@@ -16,6 +16,9 @@ bash scripts/prepare-subpath.sh
 echo "=== 4/5 部署 web-tools-subpath ==="
 npx wrangler pages deploy out --project-name web-tools-subpath --branch main --commit-dirty=true 2>&1 | grep -E "✨|✘" | head -2
 
-echo "=== 5/5 部署 Worker ==="
+echo "=== 5/6 部署 Worker（子路径代理）==="
 cd worker
 npx wrangler deploy 2>&1 | grep -E "Uploaded|Deployed|itzhouq.cn|✘" | head -4
+
+echo "=== 6/6 部署 Worker（工具子域名）==="
+npx wrangler deploy -c wrangler-subdomains.jsonc 2>&1 | grep -E "Uploaded|Deployed|itzhouq.cn|✘" | head -4
