@@ -151,7 +151,7 @@ export function XhsCover() {
     ctx.fillStyle = t.fg;
     ctx.globalAlpha = 0.75;
     ctx.font = "500 34px sans-serif";
-    ctx.fillText("小工具集 · 让创作更轻松", 108, H - 120);
+    ctx.fillText("风飞扬itzhouq的工具箱 · 让创作更轻松", 108, H - 120);
     ctx.globalAlpha = 1;
     ctx.fillStyle = t.accent;
     roundRect(ctx, 108, H - 170, 44, 8, 4);

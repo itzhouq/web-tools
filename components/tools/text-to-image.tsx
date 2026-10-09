@@ -125,7 +125,7 @@ export function TextToImage() {
     y = cardY + cardH - padding / 2 - fontSize * 1.4;
     ctx.fillStyle = t.sub;
     ctx.font = `400 ${fontSize * 0.62}px sans-serif`;
-    ctx.fillText("— 由小工具集生成 —", textX, y);
+    ctx.fillText("— 由风飞扬itzhouq的工具箱生成 —", textX, y);
   }, [title, body, theme, width, padding, fontSize]);
 
   useEffect(() => {
