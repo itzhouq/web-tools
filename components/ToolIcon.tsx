@@ -14,6 +14,7 @@ import {
   PenLine,
   QrCode,
   Scissors,
+  Server,
   ShieldAlert,
   Stamp,
   Terminal,
@@ -39,6 +40,7 @@ const ICONS: Record<string, LucideIcon> = {
   Film,
   Languages,
   Scissors,
+  Server,
   Stamp,
   JapaneseYen,
 };

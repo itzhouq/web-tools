@@ -117,6 +117,16 @@ export const TOOLS: ToolMeta[] = [
     isNew: true,
   },
   {
+    slug: "deepinfer-cost",
+    name: "DeepInfer 成本对比",
+    description: "DeepSeek 开源推理框架自托管 vs 官方 API 成本对比，算清多少量级值得自建。",
+    category: "dev",
+    icon: "Server",
+    tint: { bg: "#ccfbf1", fg: "#0d9488" },
+    keywords: ["deepinfer", "deepseek", "推理", "自托管", "gpu", "成本", "vllm"],
+    isNew: true,
+  },
+  {
     slug: "json-format",
     name: "JSON 格式化",
     description: "格式化、压缩与校验 JSON，语法高亮，错误精准定位到行列。",
