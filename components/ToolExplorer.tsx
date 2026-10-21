@@ -1,16 +1,24 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Search, Sparkles } from "lucide-react";
 import { CATEGORY_META, TOOLS, type ToolCategory } from "@/lib/tools";
 import { ToolIcon } from "@/components/ToolIcon";
+import { fetchStats } from "@/lib/usage";
 
 type Filter = ToolCategory | "all";
 
 export function ToolExplorer() {
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState<Filter>("all");
+  const [usage, setUsage] = useState<Record<string, number> | null>(null);
+
+  useEffect(() => {
+    fetchStats().then((s) => {
+      if (s?.ok) setUsage(s.tools);
+    });
+  }, []);
 
   const counts = useMemo(() => {
     const map = new Map<Filter, number>([["all", TOOLS.length]]);
@@ -56,7 +64,7 @@ export function ToolExplorer() {
         </h1>
         <p className="mx-auto mt-3 max-w-md text-[15px] leading-relaxed text-stone-500">
           压缩图片、生成封面、检查文案、处理数据 ——
-          全部在浏览器本地完成，不上传任何数据。
+          全部在浏览器本地完成，不上传任何文件与内容，仅匿名统计使用次数。
         </p>
         <div className="relative mx-auto mt-8 max-w-md">
           <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-stone-400" />
@@ -125,7 +133,11 @@ export function ToolExplorer() {
               </div>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {group.tools.map((tool) => (
-                  <ToolCard key={tool.slug} tool={tool} />
+                  <ToolCard
+                    key={tool.slug}
+                    tool={tool}
+                    usage={usage?.[tool.slug]}
+                  />
                 ))}
               </div>
             </div>
@@ -166,7 +178,13 @@ function FilterChip({
   );
 }
 
-function ToolCard({ tool }: { tool: (typeof TOOLS)[number] }) {
+function ToolCard({
+  tool,
+  usage,
+}: {
+  tool: (typeof TOOLS)[number];
+  usage?: number;
+}) {
   return (
     <Link
       href={`/tools/${tool.slug}/`}
@@ -174,12 +192,16 @@ function ToolCard({ tool }: { tool: (typeof TOOLS)[number] }) {
     >
       <div className="mb-3 flex items-start justify-between">
         <ToolIcon name={tool.icon} bg={tool.tint.bg} fg={tool.tint.fg} />
-        {tool.isNew && (
+        {tool.isNew ? (
           <span className="inline-flex items-center gap-0.5 rounded-full bg-amber-50 px-2 py-0.5 text-[11px] font-semibold text-amber-600 ring-1 ring-amber-200">
             <Sparkles className="h-3 w-3" />
             NEW
           </span>
-        )}
+        ) : typeof usage === "number" && usage > 0 ? (
+          <span className="rounded-full bg-stone-50 px-2 py-0.5 text-[11px] text-stone-400 ring-1 ring-stone-200 tabular-nums">
+            已使用 {usage} 次
+          </span>
+        ) : null}
       </div>
       <h3 className="text-[15px] font-semibold text-stone-800 group-hover:text-indigo-700">
         {tool.name}

@@ -1,6 +1,7 @@
 import { getTool } from "@/lib/tools";
 import { ToolIcon } from "@/components/ToolIcon";
 import { HomeBackLink } from "@/components/HomeBackLink";
+import { UsageBadge } from "@/components/UsageBadge";
 
 /** 工具页统一头部与容器（服务端组件） */
 export function ToolShell({
@@ -24,6 +25,9 @@ export function ToolShell({
               {tool.name}
             </h1>
             <p className="mt-0.5 text-sm text-stone-500">{tool.description}</p>
+          </div>
+          <div className="ml-auto">
+            <UsageBadge slug={slug} />
           </div>
         </div>
       </div>
