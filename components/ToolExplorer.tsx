@@ -192,16 +192,20 @@ function ToolCard({
     >
       <div className="mb-3 flex items-start justify-between">
         <ToolIcon name={tool.icon} bg={tool.tint.bg} fg={tool.tint.fg} />
-        {tool.isNew ? (
-          <span className="inline-flex items-center gap-0.5 rounded-full bg-amber-50 px-2 py-0.5 text-[11px] font-semibold text-amber-600 ring-1 ring-amber-200">
-            <Sparkles className="h-3 w-3" />
-            NEW
-          </span>
-        ) : typeof usage === "number" && usage > 0 ? (
-          <span className="rounded-full bg-stone-50 px-2 py-0.5 text-[11px] text-stone-400 ring-1 ring-stone-200 tabular-nums">
-            已使用 {usage} 次
-          </span>
-        ) : null}
+        {/* NEW 与使用次数可并存：右上角并排展示 */}
+        <div className="flex items-center gap-1.5">
+          {tool.isNew && (
+            <span className="inline-flex items-center gap-0.5 rounded-full bg-amber-50 px-2 py-0.5 text-[11px] font-semibold text-amber-600 ring-1 ring-amber-200">
+              <Sparkles className="h-3 w-3" />
+              NEW
+            </span>
+          )}
+          {typeof usage === "number" && usage > 0 && (
+            <span className="rounded-full bg-stone-50 px-2 py-0.5 text-[11px] text-stone-400 ring-1 ring-stone-200 tabular-nums">
+              已使用 {usage} 次
+            </span>
+          )}
+        </div>
       </div>
       <h3 className="text-[15px] font-semibold text-stone-800 group-hover:text-indigo-700">
         {tool.name}
