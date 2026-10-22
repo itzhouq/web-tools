@@ -11,10 +11,11 @@ import {
   type CoverTheme,
 } from "@/lib/cover-utils";
 
-/** 平台尺寸预设 */
+/** 平台尺寸预设。竖版次图（3:4）是发布器推公众号的封面源：微信首图 2.35:1 与次图 1:1
+ *  都从同一张封面裁出，竖版大字图 + 发布器按固定 y 偏移裁剪（内容须集中在图的上半部）。 */
 const SIZES = [
   { key: "wechat-head", label: "公众号首图", w: 900, h: 383, ratio: "2.35:1" },
-  { key: "wechat-sub", label: "公众号次图", w: 800, h: 800, ratio: "1:1" },
+  { key: "wechat-sub", label: "公众号次图", w: 1080, h: 1440, ratio: "3:4" },
   { key: "xhs", label: "小红书封面", w: 1080, h: 1440, ratio: "3:4" },
 ] as const;
 
@@ -66,17 +67,17 @@ export function WechatCover() {
       ctx.fill();
     }
 
-    const pad = W >= H ? 64 : 108;
+    const pad = W >= H ? 64 : 96;
 
-    // 顶部标签
+    // 顶部标签（竖版 y 偏上：发布器按 y≥0.072H 裁首图，内容需集中在图的上半部）
     let contentTop = pad * 0.9;
     if (tag.trim()) {
-      contentTop = drawTag(ctx, tag.trim(), pad, W >= H ? 52 : 150, t, W >= H ? 24 : 40) + (W >= H ? 34 : 90);
+      contentTop = drawTag(ctx, tag.trim(), pad, W >= H ? 52 : 110, t, W >= H ? 24 : 40) + (W >= H ? 34 : 56);
     }
 
     // 主标题
-    const maxTitleLines = W >= H ? 2 : 4;
-    const titleSize = W >= H ? 62 : 130;
+    const maxTitleLines = W >= H ? 2 : 3;
+    const titleSize = W >= H ? 62 : 150;
     const { lines, size: tSize } = fitLines(
       ctx,
       title.trim() || "标题",
@@ -103,7 +104,7 @@ export function WechatCover() {
 
     // 副标题
     if (subtitle.trim()) {
-      const sub = fitLines(ctx, subtitle.trim(), W - pad * 2, W >= H ? 1 : 2, W >= H ? 26 : 52, "400");
+      const sub = fitLines(ctx, subtitle.trim(), W - pad * 2, W >= H ? 1 : 2, W >= H ? 26 : 42, "400");
       ctx.fillStyle = t.sub;
       ctx.font = `400 ${sub.size}px sans-serif`;
       let sy = y + (W >= H ? 6 : 40);
